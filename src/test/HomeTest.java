@@ -67,24 +67,24 @@ public class HomeTest {
         public void InterviewRelatedStatements(){
 
                 driver.get("https://interview-prep-test.herokuapp.com/");
-    WebElement login = driver.findElement(By.xpath("//*[@placeholder='Enter Username']"));
+        WebElement login = driver.findElement(By.xpath("//*[@placeholder='Enter Username']"));
         login.sendKeys("test@yahoo.com");
-    WebElement password = driver.findElement(By.xpath("//*[@name='password']"));
+        WebElement password = driver.findElement(By.xpath("//*[@name='password']"));
         password.sendKeys("test123");
         driver.findElement(By.xpath("//*[@type='submit']")).click();
 
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div[2]/div[1]/button")).click();
         driver.findElement(By.id("inputArea1")).sendKeys("Always finish your Homework");
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div[3]/div[1]/form/button")).click();
-    String Actual  = driver.findElement(By.xpath("//*[text()='Always finish your Homework']")).getText();
-    String expected="Always finish your Homework";
+        String Actual  = driver.findElement(By.xpath("//*[text()='Always finish your Homework']")).getText();
+         String expected="Always finish your Homework";
         Assert.assertEquals(expected,Actual);
 
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div[2]/div[2]/button")).click();
         driver.findElement(By.id("inputArea2")).sendKeys("dont give up");
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div[3]/div[2]/form/button")).click();
-    String actual1 = driver.findElement(By.xpath("//*[text()='dont give up']")).getText();
-    String expected1 = "dont give up";
+        String actual1 = driver.findElement(By.xpath("//*[text()='dont give up']")).getText();
+        String expected1 = "dont give up";
         Assert.assertEquals(expected1,actual1);
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div[3]/div[1]/div/div[2]/div[3]")).click();
             driver.findElement(By.xpath("//*[@id='root']/div/div/div[2]/div[3]/div[2]/div/div[4]/div[3]/span")).click();
@@ -99,7 +99,7 @@ public class HomeTest {
         password.sendKeys("test123");
         driver.findElement(By.xpath("//*[@type='submit']")).click();
 
-        //Coding
+        // Add question to Coding
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[1]/div/form[1]/a[2]/button/img")).click();
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"question\"]")).sendKeys("What is better Java or  Selenium");
@@ -107,29 +107,76 @@ public class HomeTest {
 
         driver.navigate().back();
 
-        //SoftSkills
+        //Add question to SoftSkills
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[1]/div/form[1]/a[3]/button/img")).click();
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/div/form/div[1]/input")).sendKeys("How to use Git Hub");
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/div/form/div[2]/button")).click();
 
+    }
+    @Test(testName = "test-6")
+    public void testModifyQuestions() {
+        driver.get("https://interview-prep-test.herokuapp.com/");
+        WebElement login = driver.findElement(By.xpath("//*[@placeholder='Enter Username']"));
+        login.sendKeys("test@yahoo.com");
+        WebElement password = driver.findElement(By.xpath("//*[@name='password']"));
+        password.sendKeys("test123");
+        driver.findElement(By.xpath("//*[@type='submit']")).click();
 
+        // Deleting the question in Coding
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[1]/div/form[1]/a[2]/button/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"question\"]")).sendKeys("What is better Java or  Selenium");
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/div/form/div[2]/button")).click();
+        driver.findElement(By.xpath("//*[@class='svg-inline--fa fa-trash-alt fa-w-14']")).click();
 
+        driver.navigate().back();
 
+        // Deleting the question in SoftSkills
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[1]/div/form[1]/a[3]/button/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/div/form/div[1]/input")).sendKeys("How to use Git Hub");
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/div/form/div[2]/button")).click();
+        driver.findElement(By.xpath("//*[@class='svg-inline--fa fa-trash-alt fa-w-14']")).click();
+        driver.close();
+    }
+        @Test(testName = "test-7")
+                public void allTopicsDash() {
+            driver.get("https://interview-prep-test.herokuapp.com/");
+            WebElement login = driver.findElement(By.xpath("//*[@placeholder='Enter Username']"));
+            login.sendKeys("test@yahoo.com");
+            WebElement password = driver.findElement(By.xpath("//*[@name='password']"));
+            password.sendKeys("test123");
+            driver.findElement(By.xpath("//*[@type='submit']")).click();
 
+            //All Topics Dashboard
+            driver.findElement(By.xpath("//div/form/a")).click();
 
+            List<WebElement> allQuestions = driver.findElements(By.xpath("//*[@class='row question-section shadow-sm']"));
+            for (WebElement question : allQuestions) {
+                Assert.assertTrue(question.isEnabled());
 
+            }
+        }
+    @Test(testName = "test-8")
+    public void testSearchOption(){
 
+            driver.get("https://interview-prep-test.herokuapp.com/");
+            WebElement login = driver.findElement(By.xpath("//*[@placeholder='Enter Username']"));
+            login.sendKeys("test@yahoo.com");
+            WebElement password = driver.findElement(By.xpath("//*[@name='password']"));
+            password.sendKeys("test123");
+            driver.findElement(By.xpath("//*[@type='submit']")).click();
 
-
-
-
-
+            //All Topics Dashboard
+            driver.findElement(By.xpath("//div/form/a")).click();
+            driver.findElement(By.xpath("//*[@class='form-control m-2']")).sendKeys("Selenium");
+          //  driver.findElement(By.className("//*[@id='root']/div/div/div/form/form/button]")).click();
     }
 
     @AfterMethod
     public void tearDown(){
-        driver.close();
+       // driver.close();
 
     }
 
