@@ -44,8 +44,8 @@ public class HomeTest {
         WebElement password = driver.findElement(By.xpath("//*[@name='password']"));
         password.sendKeys("test123");
         driver.findElement(By.xpath("//*[@type='submit']")).click();
-      //  Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Manage Access']")).isEnabled());
-        Assert.assertTrue( driver.findElement(By.xpath("//*[@id=\"root\"]/div/nav/a")).isEnabled());
+
+        Assert.assertTrue( driver.findElement(By.xpath("//*[@id='root']/div/nav/a")).isEnabled());
 
     }
     @Test(testName="test-3")
@@ -56,7 +56,6 @@ public class HomeTest {
         WebElement password = driver.findElement(By.xpath("//*[@name='password']"));
         password.sendKeys("test123");
         driver.findElement(By.xpath("//*[@type='submit']")).click();
-
 
         List<WebElement>dashBoards = driver.findElements(By.xpath("//*[@type='submit']"));
         for (WebElement dashBoard:dashBoards) {
@@ -86,8 +85,8 @@ public class HomeTest {
         String actual1 = driver.findElement(By.xpath("//*[text()='dont give up']")).getText();
         String expected1 = "dont give up";
         Assert.assertEquals(expected1,actual1);
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div[2]/div[3]/div[1]/div/div[2]/div[3]")).click();
-            driver.findElement(By.xpath("//*[@id='root']/div/div/div[2]/div[3]/div[2]/div/div[4]/div[3]/span")).click();
+        driver.findElement(By.xpath("//div[3]/span")).click();
+            driver.findElement(By.xpath("//div/div[3]/div/span")).click();
 
     }
     @Test(testName = "test-5")
@@ -138,7 +137,7 @@ public class HomeTest {
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/div/form/div[1]/input")).sendKeys("How to use Git Hub");
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[1]/div/form/div[2]/button")).click();
         driver.findElement(By.xpath("//*[@class='svg-inline--fa fa-trash-alt fa-w-14']")).click();
-        driver.close();
+
     }
         @Test(testName = "test-7")
                 public void allTopicsDash() {
@@ -176,7 +175,7 @@ public class HomeTest {
 
     @AfterMethod
     public void tearDown(){
-       // driver.close();
+        driver.close();
 
     }
 
